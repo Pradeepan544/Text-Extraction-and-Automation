@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 ### Add environment variables
 
-Create a .env file in the root folder:
+- Create a .env file in the root folder:
 GEMINI_API_KEY=your_api_key_here
 
 ## 2️⃣ Running the API
@@ -42,22 +42,22 @@ GEMINI_API_KEY=your_api_key_here
 Run the FastAPI app with uvicorn:
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
-If you’re running locally but need an external/public URL (for automation tools like n8n), use localtunnel:
-npx localtunnel --port 8000
+- If you’re running locally but need an external/public URL (for automation tools like n8n), use localtunnel:
+-- npx localtunnel --port 8000
 
-This will give you a public URL like:
+- This will give you a public URL like:
 https://your-app.loca.lt/extract
 
 ## 3️⃣ API Usage
-Endpoint
-POST /extract
+- Endpoint
+- POST /extract
 
-Request Body
+- Request Body
 {
   "text": "Barack Obama was born on August 4, 1961 in Honolulu. He served as the President of the United States."
 }
 
-Example Response
+- Example Response
 {
   "persons": ["Barack Obama"],
   "dates": ["August 4, 1961"],
@@ -74,13 +74,13 @@ Example Response
 
 ## 4️⃣ n8n Integration
 
-You can automate text extraction and save results to Google Sheets using n8n
+- You can automate text extraction and save results to Google Sheets using n8n
 
-Steps:
-Open your n8n dashboard.
-Create a new workflow with these nodes:
-File > Raw → add text inputs.
-HTTP Request → configure it to call your /extract endpoint (use the public LocalTunnel URL).
-Google Sheets → save the extracted entities.
-Add the public URL credentials from LocalTunnel in the HTTP request node.
-Run the workflow — your text gets processed, and structured data lands in Google Sheets 🎉.
+- Steps:
+- Open your n8n dashboard.
+- Create a new workflow with these nodes:
+- File > Raw → add text inputs.
+- HTTP Request → configure it to call your /extract endpoint (use the public LocalTunnel URL).
+- Google Sheets → save the extracted entities.
+- Add the public URL credentials from LocalTunnel in the HTTP request node.
+- Run the workflow — your text gets processed, and structured data lands in Google Sheets 🎉.
